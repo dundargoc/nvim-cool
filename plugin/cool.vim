@@ -17,10 +17,8 @@ augroup Cool
     autocmd!
 augroup END
 
-if exists('##OptionSet')
-    " toggle coolness when hlsearch is toggled
-    autocmd Cool OptionSet hlsearch call <SID>PlayItCool(v:option_old, v:option_new)
-endif
+" toggle coolness when hlsearch is toggled
+autocmd Cool OptionSet hlsearch call <SID>PlayItCool(v:option_old, v:option_new)
 
 function! s:StartHL()
     if !v:hlsearch || mode() isnot 'n'
