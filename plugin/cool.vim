@@ -1,10 +1,3 @@
-" vim-cool - Disable hlsearch when you are done searching.
-" Maintainer:	romainl <romainlafourcade@gmail.com>
-" Version:	0.0.2
-" License:	MIT License
-" Location:	plugin/cool.vim
-" Website:	https://github.com/romainl/vim-cool
-
 if exists("g:loaded_cool") || v:version < 704 || &compatible
     finish
 endif
