@@ -37,35 +37,6 @@ function! s:StartHL()
     finally
         call winrestview(pos)
     endtry
-    if !get(g:,'CoolTotalMatches')
-        return
-    endif
-    exe "silent! norm! :let g:cool_char=nr2char(screenchar(screenrow(),1))\<cr>"
-    let cool_char = remove(g:,'cool_char')
-    if cool_char !~ '[/?]'
-        return
-    endif
-    let [f, ws, now, noOf] = [0, &wrapscan, reltime(), [0,0]]
-    set nowrapscan
-    try
-        while f < 2
-            if reltimestr(reltime(now))[:-6] =~ '[1-9]'
-                " time >= 100ms
-                return
-            endif
-            let noOf[v:searchforward ? f : !f] += 1
-            try
-                silent exe "keepjumps norm! ".(f ? 'n' : 'N')
-            catch /^Vim[^)]\+):E38[45]\D/
-                call setpos('.',rpos)
-                let f += 1
-            endtry
-        endwhile
-    finally
-        call winrestview(pos)
-        let &wrapscan = ws
-    endtry
-    redraw|echo cool_char.@/ 'match' noOf[0] 'of' noOf[0] + noOf[1] - 1
 endfunction
 
 function! s:StopHL()
