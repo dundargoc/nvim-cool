@@ -46,7 +46,7 @@ function! s:PlayItCool(old, new)
     if a:old == 0 && a:new == 1
         " nohls --> hls
         "   set up coolness
-        noremap <silent> <Plug>(StopHL) :<C-U>nohlsearch<cr>
+        call luaeval('require("cool").set_mapping()')
         noremap! <expr> <Plug>(StopHL) execute('nohlsearch')[-1]
 
         autocmd Cool CursorMoved * call <SID>StartHL()
