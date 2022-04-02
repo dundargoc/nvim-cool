@@ -1,4 +1,4 @@
-if exists("g:loaded_cool") || v:version < 704 || &compatible
+if exists("g:loaded_cool") || &compatible
     finish
 endif
 let g:loaded_cool = 1
