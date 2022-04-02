@@ -1,4 +1,4 @@
-if exists("g:loaded_cool") || &compatible
+if exists("g:loaded_cool")
     finish
 endif
 let g:loaded_cool = 1
