@@ -70,3 +70,5 @@ endfunction
 call <SID>PlayItCool(0, &hlsearch)
 
 let &cpo = s:save_cpo
+
+" vim: shiftwidth=4
