@@ -14,7 +14,8 @@ augroup END
 autocmd Cool OptionSet hlsearch call <SID>PlayItCool(v:option_old, v:option_new)
 
 function! s:StartHL()
-    if !v:hlsearch || mode() isnot 'n'
+    let current_mode_not_normal = luaeval('require("cool").current_mode_not_normal()')
+    if !v:hlsearch || current_mode_not_normal
         return
     endif
     let [pos, rpos] = [winsaveview(), getpos('.')]
@@ -33,7 +34,8 @@ function! s:StartHL()
 endfunction
 
 function! s:StopHL()
-    if !v:hlsearch || mode() isnot 'n'
+    let current_mode_not_normal = luaeval('require("cool").current_mode_not_normal()')
+    if !v:hlsearch || current_mode_not_normal
         return
     else
         silent call feedkeys("\<Plug>(StopHL)", 'm')
