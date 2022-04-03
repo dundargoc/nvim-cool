@@ -5,7 +5,7 @@ function M.current_mode_not_normal()
 end
 
 function M.set_mapping()
-    vim.keymap.set('', '<Plug>(StopHL)', ':<C-U>nohlsearch<cr>', { silent = true })
+    vim.keymap.set({ 'n', 'v', 'o' }, '<Plug>(StopHL)', ':<C-U>nohlsearch<cr>', { silent = true })
 end
 
 return M

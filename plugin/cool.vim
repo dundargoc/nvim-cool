@@ -18,7 +18,8 @@ function! s:StartHL()
     if !v:hlsearch || current_mode_not_normal
         return
     endif
-    let [pos, rpos] = [winsaveview(), getpos('.')]
+    let pos = winsaveview()
+    let rpos = getpos('.')
     silent! exe "keepjumps go".(line2byte('.')+col('.')-(v:searchforward ? 2 : 0))
     try
         silent keepjumps norm! n
@@ -37,9 +38,9 @@ function! s:StopHL()
     let current_mode_not_normal = luaeval('require("cool").current_mode_not_normal()')
     if !v:hlsearch || current_mode_not_normal
         return
-    else
-        silent call feedkeys("\<Plug>(StopHL)", 'm')
     endif
+
+    silent call feedkeys("\<Plug>(StopHL)", 'm')
 endfunction
 
 function! s:PlayItCool(old, new)
